@@ -32,6 +32,7 @@ const AcademicYear = () => {
       if (debouncedSearch) params.append("search", debouncedSearch);
 
       const { data } = await api.get(`/academic-years?${params.toString()}`);
+
       const d = data as any;
       if (d.years) {
         setYears(d.years);

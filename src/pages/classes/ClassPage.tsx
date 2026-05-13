@@ -139,7 +139,7 @@ export default function ClassPage() {
 
   useEffect(() => {
     setLoading(true);
-    lmsDocs.listShared({ className: cls })
+    lmsDocs.listShared({ class: cls })
       .then(r => setDocs(r.documents ?? []))
       .catch(() => setDocs([]))
       .finally(() => setLoading(false));
@@ -168,7 +168,7 @@ export default function ClassPage() {
       <div className="flex-1 flex items-center justify-center p-6">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground mb-2">Class not found</h2>
-          <p className="text-muted-foreground mb-4">"{className}" is not a valid class.</p>
+          <p className="text-muted-foreground mb-4">"{cls}" is not a valid class.</p>
           <Button onClick={() => navigate("/dashboard")}>Go to Dashboard</Button>
         </div>
       </div>

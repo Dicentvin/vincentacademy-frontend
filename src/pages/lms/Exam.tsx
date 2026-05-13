@@ -53,7 +53,7 @@ const Exam = () => {
     if (isStudent) {
       try {
         const res = await api.get(`/exams/${id}/result`);
-        setSubmission(res.data);
+        setSubmission((res.data as any) ?? null);
       } catch {
         setSubmission(null);
       }

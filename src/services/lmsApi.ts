@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_LMS_API_URL ?? "";
+const BASE = (import.meta as any).env?.VITE_LMS_API_URL ?? "";
 
 function getToken(): string { return localStorage.getItem("lms_token") ?? ""; }
 function authHeaders(): HeadersInit {
