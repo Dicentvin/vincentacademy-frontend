@@ -66,13 +66,13 @@ const GeneratorControls = ({
           api.get("/classes"),
           api.get("/academic-years"),
         ]);
-        setClasses(clsRes.data.classes);
-        setYears(yearRes.data.years);
+        const clsData = clsRes.data as any;
+        const yearData = yearRes.data as any;
+        setClasses(clsData.classes ?? []);
+        setYears(yearData.years ?? []);
 
-        const current = Array.isArray(yearRes.data)
-          ? yearRes.data.find((y: academicYear) => y.isCurrent)
-          : yearRes.data;
-
+        const yearList: academicYear[] = yearData.years ?? [];
+        const current = yearList.find((y) => y.isCurrent);
         if (current?._id) setSelectedYear(current._id);
       } catch (error) {
         toast.error("Failed to load selection data");
